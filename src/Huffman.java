@@ -1,5 +1,3 @@
-import Heap.Element;
-import Heap.PQ;
 import Heap.PQHeap;
 
 import java.util.ArrayList;

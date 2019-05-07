@@ -13,8 +13,8 @@ public class Encode {
     public static void main(String[] args) throws Exception {
 
 
-        File filein = new File("C:\\Users\\skakk\\Documents\\Java_Projects\\Algorithms_part3\\src\\in.txt");
-        File fileout = new File("C:\\Users\\skakk\\Documents\\Java_Projects\\Algorithms_part3\\src\\out.txt");
+        File filein = new File("/home/setero/Documents/Algorithms_part3/src/in.txt");
+        File fileout = new File("/home/setero/Documents/Algorithms_part3/src/out.txt");
 
 
         FileInputStream fileInputStream = new FileInputStream(filein);

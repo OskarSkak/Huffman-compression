@@ -3,8 +3,8 @@ import java.io.*;
 public class Decode {
     public static void main(String[] args) throws IOException {
 
-        File filein = new File("C:\\Users\\skakk\\Documents\\Java_Projects\\Algorithms_part3\\src\\out.txt");
-        File decoded = new File("C:\\Users\\skakk\\Documents\\Java_Projects\\Algorithms_part3\\src\\decoded.txt");
+        File filein = new File("/home/setero/Documents/Algorithms_part3/src/out.txt");
+        File decoded = new File("/home/setero/Documents/Algorithms_part3/src/decoded.txt");
 
         FileInputStream fileInputStream = new FileInputStream(filein);
         FileOutputStream fileOutputStream = new FileOutputStream(decoded);
@@ -57,6 +57,7 @@ public class Decode {
             }else{
                 fileOutputStream.write(toWrite.getSpot());
                 toWrite = root;
+                j--;
             }
         }
 
