@@ -47,17 +47,17 @@ public class Decode {
         Node root = huffman.buildTree();
         Node toWrite = root;
 
-        for(int j = 0; j < charArr.length; j++){
+        for(int j = 0; j < charArr.length;){
             if(toWrite.getLeft() != null && toWrite.getRight() != null) {
                 if (charArr[j] == '0') {
                     toWrite = toWrite.getLeft();
                 }else if (charArr[j] == '1'){
                     toWrite = toWrite.getRight();
                 }
+                j++;
             }else{
                 fileOutputStream.write(toWrite.getSpot());
                 toWrite = root;
-                j--;
             }
         }
 
