@@ -3,6 +3,12 @@ import java.io.*;
 public class Decode {
     public static void main(String[] args) throws IOException {
 
+        //TODO: COMMENT IN AT HAND IN!
+/*
+        FileInputStream fileInputStream = new FileInputStream(args[0]);
+        FileOutputStream fileOutputStream = new FileOutputStream(args[1]);
+*/
+
         File filein = new File("/home/setero/Documents/Algorithms_part3/src/out.txt");
         File decoded = new File("/home/setero/Documents/Algorithms_part3/src/decoded.txt");
 
@@ -26,21 +32,6 @@ public class Decode {
                 path += bit;
             }
         }
-
-
-        /*
-        int[] freqTable = new int[256];
-
-
-        int bit = 0;
-        int i = 0;
-        while((( bit = bitInputStream.readInt()) != -1) && (i < 255)){
-            freqTable[i] = bit;
-            System.out.println(i + ": " + bit);
-            i++;
-        }*/
-
-
 
         char[] charArr = path.toCharArray();
         Huffman huffman = new Huffman(frequenceBuilder.getFrequenceTable());

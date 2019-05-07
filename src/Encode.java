@@ -13,6 +13,11 @@ public class Encode {
     public static void main(String[] args) throws Exception {
 
 
+        //TODO: COMMENT IN AT HAND IN!
+/*
+        FileInputStream fileInputStream = new FileInputStream(args[0]);
+        FileOutputStream fileOutputStream = new FileOutputStream(args[1]);
+*/
         File filein = new File("/home/setero/Documents/Algorithms_part3/src/in.txt");
         File fileout = new File("/home/setero/Documents/Algorithms_part3/src/out.txt");
 
