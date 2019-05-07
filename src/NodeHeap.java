@@ -1,26 +1,23 @@
-
-package Heap;
-
-public class PQHeap implements PQ {
+public class NodeHeap {
 
 
 
     //********************************************** PROPERTIES *********************************************
 
     // The array containing the PriorityQueHeap
-    public Element[] minHeap;
+    public Node[] minHeap;
 
     //The size of the heap
     public int heapSize;
 
 
     //********************************************** CONSTRUCTOR *********************************************
-    public PQHeap( int size) {
-        this.minHeap = new Element[size];
+    public NodeHeap( int size) {
+        this.minHeap = new Node[size];
         this.heapSize = 0;
     }
 
-    public Element[] getHeapArray(){
+    public Node[] getHeapArray(){
         return this.minHeap;
     }
 
@@ -28,10 +25,10 @@ public class PQHeap implements PQ {
      *
      * @return The first element in the array which is the lowest in the priority que
      */
-    @Override
-    public Element extractMin() {
+
+    public Node extractMin() {
         // Getting the lowest value
-        Element min = minHeap[0];
+        Node min = minHeap[0];
         // Setting the new root to the lowest leaf of the tree
         minHeap[0] = minHeap[heapSize-1];
         // Removing the lowest leaf
@@ -53,8 +50,8 @@ public class PQHeap implements PQ {
      *
      * @param e the new element to insert
      */
-    @Override
-    public void insert(Element e) {
+
+    public void insert(Node e) {
         // Increasing the size of the minHeap because a new element is inserted
         heapSize++;
 
@@ -63,7 +60,7 @@ public class PQHeap implements PQ {
         // Inserting the new element into the last position
         this.minHeap[i] = e;
         // Checking if the parent is higher than the new element. Swapping the lowest element to the root
-        while (i > 0  && minHeap[Parent(i)].getData() > minHeap[i].getData()) {
+        while (i > 0  && minHeap[Parent(i)].getFrequency() > minHeap[i].getFrequency()) {
             swap(i, Parent(i));
             i = Parent(i);
         }
@@ -80,7 +77,7 @@ public class PQHeap implements PQ {
      *
      *
      */
-    private void MinHeapify(Element[] heap, int i) {
+    private void MinHeapify(Node[] heap, int i) {
 
         // The lowest value in the tree
         int lowest;
@@ -88,14 +85,14 @@ public class PQHeap implements PQ {
         int right = Right(i);
 
         // Checks if the nodes left child is lower
-        if (left <= heapSize-1 && heap[left].getData() < heap[i].getData()) {
+        if (left <= heapSize-1 && heap[left].getFrequency() < heap[i].getFrequency()) {
             lowest = left;
         } else {
             lowest = i;
         }
 
         // checks if the nodes right child is lower
-        if ( right <= heapSize-1 && heap[right].getData() < heap[lowest].getData()) {
+        if ( right <= heapSize-1 && heap[right].getFrequency() < heap[lowest].getFrequency()) {
             lowest = right;
         }
 
@@ -138,7 +135,7 @@ public class PQHeap implements PQ {
      * @param secondIndex the index of the second value
      */
     private void swap(int firstIndex , int secondIndex) {
-        Element temp = this.minHeap[firstIndex];
+        Node temp = this.minHeap[firstIndex];
         this.minHeap[firstIndex] = this.minHeap[secondIndex];
         this.minHeap[secondIndex] = temp;
     }

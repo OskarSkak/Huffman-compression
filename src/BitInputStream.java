@@ -37,6 +37,23 @@ public class BitInputStream {
         return (nextBits >>> numBitsRemaining) & 1;
     }
 
+    public int get32BitDecimal() throws IOException{
+        int bit;
+        int i = 0;
+        String hexbyte = "";
+        int decimal = 0;
+        while ((bit = readBit() ) != -1) {
+            hexbyte += Integer.toString(bit);
+            i++;
+            if (i == 32) {
+                decimal = Integer.parseInt(hexbyte , 2);
+                return decimal;
+            }
+        }
+        return -1;
+    }
+
+
     public int GetDecimal() throws IOException {
         int bit;
         int i = 0;
@@ -52,6 +69,28 @@ public class BitInputStream {
 
         }
         return -1;
+    }
+
+
+    // Reads an int from the stream. Throws IOException if 32 bits are
+    // not available.
+    public int readInt() throws IOException {
+        int output = 0;
+        int nextBit;
+        int bitsAdded = 0;
+        while(bitsAdded < 32){
+            nextBit = readBit();
+            if (nextBit == -1)
+                throw new IOException("Not enough bits while trying to read int");
+            output = output << 1 | nextBit;
+            bitsAdded++;
+        }
+        return output;
+    }
+
+    // Closes this stream and the underlying InputStream.
+    public void close() throws IOException {
+        input.close();
     }
 
 }
