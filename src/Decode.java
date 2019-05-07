@@ -13,13 +13,13 @@ public class Decode {
 
         FrequenceBuilder frequenceBuilder = new FrequenceBuilder();
 
-        /*int i = 0;
+        int i = 0;
         int bit = 0;
         String path = "";
         while ( bit != -1)  {
             if(i < 256) {
                 bit = bitInputStream.readInt();
-                frequenceBuilder.insert(bit);
+                frequenceBuilder.getFrequenceTable()[i] = bit;
                 i++;
             } else{
                 bit = bitInputStream.readBit();
@@ -27,16 +27,20 @@ public class Decode {
             }
         }
 
-        HERE__--------------------------
+
+        /*
+        int[] freqTable = new int[256];
+
 
         int bit = 0;
         int i = 0;
-        while(( bit = bitInputStream.get32BitDecimal()) != -1){
-            frequenceBuilder.insert(bit);
-        }
-*/
+        while((( bit = bitInputStream.readInt()) != -1) && (i < 255)){
+            freqTable[i] = bit;
+            System.out.println(i + ": " + bit);
+            i++;
+        }*/
 
-        String path = "";
+
 
         char[] charArr = path.toCharArray();
         Huffman huffman = new Huffman(frequenceBuilder.getFrequenceTable());
