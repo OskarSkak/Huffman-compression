@@ -3,8 +3,14 @@ import java.io.*;
 public class Decode {
     public static void main(String[] args) throws IOException {
 
-        File filein = new File("C:\\Users\\skakk\\Documents\\Java_Projects\\Algorithms_part3\\src\\out.txt");
-        File decoded = new File("C:\\Users\\skakk\\Documents\\Java_Projects\\Algorithms_part3\\src\\decoded.txt");
+        //TODO: COMMENT IN AT HAND IN!
+/*
+        FileInputStream fileInputStream = new FileInputStream(args[0]);
+        FileOutputStream fileOutputStream = new FileOutputStream(args[1]);
+*/
+
+        File filein = new File("/home/setero/Documents/Algorithms_part3/src/out.txt");
+        File decoded = new File("/home/setero/Documents/Algorithms_part3/src/decoded.txt");
 
         FileInputStream fileInputStream = new FileInputStream(filein);
         FileOutputStream fileOutputStream = new FileOutputStream(decoded);
@@ -27,33 +33,19 @@ public class Decode {
             }
         }
 
-
-        /*
-        int[] freqTable = new int[256];
-
-
-        int bit = 0;
-        int i = 0;
-        while((( bit = bitInputStream.readInt()) != -1) && (i < 255)){
-            freqTable[i] = bit;
-            System.out.println(i + ": " + bit);
-            i++;
-        }*/
-
-
-
         char[] charArr = path.toCharArray();
         Huffman huffman = new Huffman(frequenceBuilder.getFrequenceTable());
         Node root = huffman.buildTree();
         Node toWrite = root;
 
-        for(int j = 0; j < charArr.length; j++){
+        for(int j = 0; j < charArr.length;){
             if(toWrite.getLeft() != null && toWrite.getRight() != null) {
                 if (charArr[j] == '0') {
                     toWrite = toWrite.getLeft();
                 }else if (charArr[j] == '1'){
                     toWrite = toWrite.getRight();
                 }
+                j++;
             }else{
                 fileOutputStream.write(toWrite.getSpot());
                 toWrite = root;
