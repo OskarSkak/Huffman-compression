@@ -9,8 +9,8 @@ public class Decode {
         FileOutputStream fileOutputStream = new FileOutputStream(args[1]);
 */
 
-        File filein = new File("/home/setero/Documents/Algorithms_part3/src/out.txt");
-        File decoded = new File("/home/setero/Documents/Algorithms_part3/src/decoded.txt");
+        File filein = new File("/Users/casperhasnsen/Documents/SDU/4thsemester/Algorithms/lab3/projekt3/src/out.txt");
+        File decoded = new File("/Users/casperhasnsen/Documents/SDU/4thsemester/Algorithms/lab3/projekt3/src/decoded.txt");
 
         FileInputStream fileInputStream = new FileInputStream(filein);
         FileOutputStream fileOutputStream = new FileOutputStream(decoded);
@@ -21,7 +21,7 @@ public class Decode {
 
         int i = 0;
         int bit = 0;
-        String path = "";
+        StringBuilder path = new StringBuilder();
         while ( bit != -1)  {
             if(i < 256) {
                 bit = bitInputStream.readInt();
@@ -29,11 +29,11 @@ public class Decode {
                 i++;
             } else{
                 bit = bitInputStream.readBit();
-                path += bit;
+                path.append(bit);
             }
         }
 
-        char[] charArr = path.toCharArray();
+        char[] charArr = path.toString().toCharArray();
         Huffman huffman = new Huffman(frequenceBuilder.getFrequenceTable());
         Node root = huffman.buildTree();
         Node toWrite = root;

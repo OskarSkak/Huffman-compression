@@ -1,11 +1,8 @@
-import Heap.Element;
-import Heap.PQ;
-import Heap.PQHeap;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
+
 
 public class Encode {
 
@@ -18,8 +15,8 @@ public class Encode {
         FileInputStream fileInputStream = new FileInputStream(args[0]);
         FileOutputStream fileOutputStream = new FileOutputStream(args[1]);
 */
-        File filein = new File("/home/setero/Documents/Algorithms_part3/src/in.txt");
-        File fileout = new File("/home/setero/Documents/Algorithms_part3/src/out.txt");
+        File filein = new File("/Users/casperhasnsen/Documents/SDU/4thsemester/Algorithms/lab3/projekt3/src/in.txt");
+        File fileout = new File("/Users/casperhasnsen/Documents/SDU/4thsemester/Algorithms/lab3/projekt3/src/out.txt");
 
 
         FileInputStream fileInputStream = new FileInputStream(filein);
@@ -40,17 +37,21 @@ public class Encode {
 
         String[] codeArr = huffman.orderedTraversal();
 
-        String path = "";
+        StringBuilder path = new StringBuilder();
+        String bite  = "";
 
         fileInputStream = new FileInputStream(filein);
         bitInputStream = new BitInputStream(fileInputStream);
 
+
         int secondBit;
+
         while ((secondBit = bitInputStream.GetDecimal()) != -1){
-            path += codeArr[secondBit];
+             path.append(codeArr[secondBit]);
+
         }
 
-        char[] charArr = path.toCharArray();
+        char[] charArr = path.toString().toCharArray();
 
         for(int i = 0; i < frequenceBuilder.getFrequenceTable().length; i++){
             bitOutputStream.writeInt(frequenceBuilder.getFrequenceTable()[i]);
